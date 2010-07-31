@@ -352,6 +352,7 @@ u32 vcd_gate_clock(struct vcd_dev_ctxt_type *p_dev_ctxt)
 {
 	u32 rc = VCD_S_SUCCESS;
 
+#if ENA_CLK_GATE
 	if (p_dev_ctxt->e_pwr_clk_state == VCD_PWRCLK_STATE_OFF ||
 		p_dev_ctxt->e_pwr_clk_state == VCD_PWRCLK_STATE_ON_NOTCLOCKED) {
 		VCD_MSG_ERROR("%s(): Clk is Off or Not Clked yet \n", __func__);
@@ -366,7 +367,9 @@ u32 vcd_gate_clock(struct vcd_dev_ctxt_type *p_dev_ctxt)
 		p_dev_ctxt->e_pwr_clk_state = VCD_PWRCLK_STATE_ON_CLOCKGATED;
 	else
 		rc = VCD_ERR_FAIL;
-
+#else
+	VCD_MSG_MED("%s(): Clk Gating Diabled \n", __func__);
+#endif
 	return rc;
 }
 
@@ -374,6 +377,7 @@ u32 vcd_un_gate_clock(struct vcd_dev_ctxt_type *p_dev_ctxt)
 {
 	u32 rc = VCD_S_SUCCESS;
 
+#if ENA_CLK_GATE
 	if (p_dev_ctxt->e_pwr_clk_state == VCD_PWRCLK_STATE_OFF ||
 		p_dev_ctxt->e_pwr_clk_state == VCD_PWRCLK_STATE_ON_NOTCLOCKED) {
 		VCD_MSG_ERROR("%s(): Clk is Off or Not Clked yet \n", __func__);
@@ -388,7 +392,9 @@ u32 vcd_un_gate_clock(struct vcd_dev_ctxt_type *p_dev_ctxt)
 		p_dev_ctxt->e_pwr_clk_state = VCD_PWRCLK_STATE_ON_CLOCKED;
 	else
 		rc = VCD_ERR_FAIL;
-
+#else
+	VCD_MSG_MED("%s(): Clk Gating Diabled \n", __func__);
+#endif
 	return rc;
 }
 
