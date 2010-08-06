@@ -1169,4 +1169,8 @@ config MSM7200A_TLMM
 
 config MSM8660_TLMM
        bool
+
+config MSM_BUS_SCALING
+	bool "Bus scaling driver"
+	default n
 endif
