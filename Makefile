@@ -1,7 +1,7 @@
 VERSION = 2
 PATCHLEVEL = 6
 SUBLEVEL = 32
-EXTRAVERSION = .9-pax0r-CM
+EXTRAVERSION = .59-RON-RM-Cyanogenmod
 NAME = Man-Eating Seals of Antiquity
 
 # *DOCUMENTATION*
