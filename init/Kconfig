@@ -23,6 +23,11 @@ config CONSTRUCTORS
 
 menu "General setup"
 
+config VSYNC_ON
+        bool "VSync ON"
+        ---help---
+	This enable/disable VSync on LG Optimus Me
+
 config SCHED_BFS
 	bool "BFS cpu scheduler"
 	---help---
