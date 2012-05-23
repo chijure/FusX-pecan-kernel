@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.32.59-RON-RM-Cyanogenmod
- * Wed May 23 16:47:11 2012
+ * Wed May 23 20:11:44 2012
  */
 #define AUTOCONF_INCLUDED
 #define CONFIG_VIDEO_V4L1_COMPAT 1
