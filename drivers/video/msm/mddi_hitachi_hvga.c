@@ -691,7 +691,11 @@ static int mddi_hitachi_lcd_init(void)
 		pinfo->bpp = 16;
 	
 		// vsync config
+#ifndef CONFIG_VSYNC_ON
 		pinfo->lcd.vsync_enable = FALSE;
+#endif	
+
+		pinfo->lcd.vsync_enable = TRUE;
 		pinfo->lcd.refx100 = (mddi_hitachi_rows_per_second * 100) /
                         		mddi_hitachi_rows_per_refresh;
 
@@ -703,8 +707,13 @@ static int mddi_hitachi_lcd_init(void)
 		pinfo->lcd.v_back_porch = 6;
 		pinfo->lcd.v_front_porch = 6;
 		pinfo->lcd.v_pulse_width = 4;
-
+		
+#ifndef CONFIG_VSYNC_ON
 		pinfo->lcd.hw_vsync_mode = FALSE;
+#endif		
+
+		
+		pinfo->lcd.hw_vsync_mode = TRUE;
 		pinfo->lcd.vsync_notifier_period = (1 * HZ);
 
 		pinfo->bl_max = 4;
