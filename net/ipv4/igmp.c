@@ -834,7 +834,7 @@ static void igmp_heard_query(struct in_device *in_dev, struct sk_buff *skb,
 
 
 	if (len == 8) {
-		if (ih->code == 0) {
+		if (ih->code == 0 || IGMP_V2_SEEN(in_dev)) {
 			/* Alas, old v1 router presents here. */
 
 			max_delay = IGMP_Query_Response_Interval;
