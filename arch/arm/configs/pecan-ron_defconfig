@@ -1,6 +1,6 @@
 #
 # Automatically generated make config: don't edit
-# Linux kernel version: 2.6.32.59-RON-RM-V1020
+# Linux kernel version: 2.6.32.59-RON-RM-V1060
 # Mon May  23 03:53:20 2012
 #
 CONFIG_ARM=y
