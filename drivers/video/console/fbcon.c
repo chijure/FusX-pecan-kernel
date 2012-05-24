@@ -2215,7 +2215,7 @@ static int fbcon_switch(struct vc_data *vc)
 	 *
 	 * info->currcon = vc->vc_num;
 	 */
-	for (i = 0; i < FB_MAX; i++) {
+	for (i = 1; i < FB_MAX; i++) {
 		if (registered_fb[i] != NULL && registered_fb[i]->fbcon_par) {
 			struct fbcon_ops *o = registered_fb[i]->fbcon_par;
 
@@ -3478,7 +3478,7 @@ static void fbcon_start(void)
 
 		acquire_console_sem();
 
-		for (i = 0; i < FB_MAX; i++) {
+		for (i = 1; i < FB_MAX; i++) {
 			if (registered_fb[i] != NULL) {
 				info_idx = i;
 				break;
@@ -3501,7 +3501,7 @@ static void fbcon_exit(void)
 	kfree((void *)softback_buf);
 	softback_buf = 0UL;
 
-	for (i = 0; i < FB_MAX; i++) {
+	for (i = 1; i < FB_MAX; i++) {
 		int pending;
 
 		mapped = 0;
