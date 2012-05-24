@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
- * Linux kernel version: 2.6.32.59-RON-RM-Cyanogenmod
- * Wed May 23 20:11:44 2012
+ * Linux kernel version: 2.6.32.59-RON-RM-V1020
+ * Thu May 24 12:53:11 2012
  */
 #define AUTOCONF_INCLUDED
 #define CONFIG_VIDEO_V4L1_COMPAT 1
@@ -11,7 +11,7 @@
 #define CONFIG_COMPAT_BRK 1
 #define CONFIG_USB_ANDROID_RNDIS_WCEIS 1
 #define CONFIG_VIDEO_HELPER_CHIPS_AUTO 1
-#define CONFIG_MSM_CPU_FREQ_MIN 245760
+#define CONFIG_MSM_CPU_FREQ_MIN 480000
 #define CONFIG_DEBUG_USER 1
 #define CONFIG_BT_HCIUART 1
 #define CONFIG_NETFILTER_NETLINK_QUEUE 1
