@@ -42,6 +42,8 @@
 
 #define DEF_FREQUENCY_UP_THRESHOLD		(92)
 #define DEF_FREQUENCY_DOWN_THRESHOLD		(27)
+#define CONFIG_CPU_FREQ_SAMPLING_LATENCY_MULTIPLIER  1000
+#define CONFIG_CPU_FREQ_MIN_TICKS                10
 
 /*
  * The polling frequency of this governor depends on the capability of
