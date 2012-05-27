@@ -1,5 +1,5 @@
 #!/bin/bash
-#based on script to compile rm kernel 
+#this is  script to compile rm kernel 
 
 function setenv {
 	echo -n "Setting ARM environment..."
