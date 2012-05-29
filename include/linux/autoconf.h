@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.32.59-RM-32-PECAN
- * Tue May 29 20:47:27 2012
+ * Tue May 29 21:11:59 2012
  */
 #define AUTOCONF_INCLUDED
 #define CONFIG_VIDEO_V4L1_COMPAT 1
@@ -247,7 +247,7 @@
 #define CONFIG_LGE_MMC_CLEANUP_PATCH 1
 #define CONFIG_IKCONFIG 1
 #define CONFIG_CRYPTO_AEAD 1
-#define CONFIG_TOUCHSCREEN_MCS6000 1
+#define CONFIG_TOUCHSCREEN_MCS7000 1
 #define CONFIG_NF_CONNTRACK_PROC_COMPAT 1
 #define CONFIG_IP_FIB_HASH 1
 #define CONFIG_DEFAULT_MMAP_MIN_ADDR 4096
