@@ -3,22 +3,22 @@
 
 ========================================================================================
 
-                         RM .32 KERNEL FOR LG OPTIMUS ME P350 AKA PECAN/LIFE/SWIFT ME  
+RM .32 KERNEL FOR LG OPTIMUS ME P350 AKA PECAN/LIFE/SWIFT ME  
 
-                        CREADIT-
+CREADIT-
 
-                                    RON GOKHLE AKA CIPSGOKHLE  @ xda-developers.com
+RON GOKHLE AKA CIPSGOKHLE  @ xda-developers.com
 
 ========================================================================================
 
 
-                      How to build-
+How to build-
 
-                                        - git clone git://github.com/kerneldevs/RM_kernel_pecan.git
+- git clone git://github.com/kerneldevs/RM_kernel_pecan.git
 
-                                           now in your pc have rm kernel source code so move to next step
+now in your pc have rm kernel source code so move to next step
 
-                                        - cd RM_kernel 
+- cd RM_kernel 
 
                                              
 NOW YOU NEED TOOLCHAIN ON YOUR PC. GET IT AND CREATE A FOLDER CALLED 'prebuilt '.
@@ -26,18 +26,18 @@ NOW IN PREBUILT CREATE NEW FODLER CALL 'linux-x86' NOW CREATE ANOTHER ONE IN X86
 TOOLCHAIN FOLDER HERE 
 NOW START TO COMPILE
 
-                                          - make pecan-ron_defconfig
+- make pecan-ron_defconfig
 
-                                          - make ARCH=arm CROSS_COMPILE=../prebuilt/linux-x86/toolchain/arm-eabi-4.4.0/bin/arm-eabi- -j4
+- make ARCH=arm CROSS_COMPILE=../prebuilt/linux-x86/toolchain/arm-eabi-4.4.0/bin/arm-eabi- -j4
 
  
 (NOTICE IF YOU ARE USING OTHER TOOLCHAIN CHANGE THE CHANGE ACCORDING TO IT)
 
 OR YOU CAN USE THIS TOO 
 
-                                           - make pecan-ron_defconfig
+- make pecan-ron_defconfig
 
-                                           - ./build-kernel.sh
+- ./build-kernel.sh
 
 
 ONCE YOUR COMPILE DONE YOU WILL GET ZIMAGE UNDER ARCH/ARM/BOOT
