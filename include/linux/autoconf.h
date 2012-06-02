@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.32.59-RM-32-PECAN
- * Sat Jun  2 03:16:10 2012
+ * Sat Jun  2 11:04:31 2012
  */
 #define AUTOCONF_INCLUDED
 #define CONFIG_VIDEO_V4L1_COMPAT 1
@@ -190,6 +190,7 @@
 #define CONFIG_INET6_XFRM_TUNNEL 1
 #define CONFIG_SLIP 1
 #define CONFIG_AMSS_7X25_VERSION_2009 1
+#define CONFIG_IOSCHED_CFQ 1
 #define CONFIG_SYS_SUPPORTS_APM_EMULATION 1
 #define CONFIG_RTC_SECURE_TIME_SUPPORT 1
 #define CONFIG_NF_CONNTRACK_PPTP 1
