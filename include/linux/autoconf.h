@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.32.59-RM-32-PECAN
- * Wed Jun 13 12:31:21 2012
+ * Sun Jun 17 11:59:29 2012
  */
 #define AUTOCONF_INCLUDED
 #define CONFIG_VIDEO_V4L1_COMPAT 1
@@ -744,7 +744,7 @@
 #define CONFIG_MTD_CFI_I2 1
 #define CONFIG_PPP 1
 #define CONFIG_IPV6_ROUTER_PREF 1
-#define CONFIG_PANIC_TIMEOUT 1
+#define CONFIG_PANIC_TIMEOUT 10
 #define CONFIG_DEBUG_INFO 1
 #define CONFIG_MSM_ONCRPCROUTER 1
 #define CONFIG_IOSCHED_AS 1
