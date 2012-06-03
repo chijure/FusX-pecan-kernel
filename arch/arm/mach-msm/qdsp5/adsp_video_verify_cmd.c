@@ -130,6 +130,11 @@ static int verify_vdec_pkt_cmd(struct msm_adsp_module *module,
 		skip = 0;
 		start_pos = 6;
 		break;
+	case 0x9201: /*For Real Decoder*/
+        num_addr = 2;
+        skip = 0;
+        start_pos = 5;
+        break;    
 	case 0x0001: /* wmv */
 		num_addr = 2;
 		skip = 0;
