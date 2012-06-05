@@ -35,7 +35,7 @@ NOW START TO COMPILE
 
 OR YOU CAN USE THIS TOO 
 
-- make pecan-ron_defconfig
+- make rm-kernel_defconfig
 
 - ./build-kernel.sh
 
