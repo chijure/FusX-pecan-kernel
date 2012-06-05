@@ -65,8 +65,8 @@ UTS_TRUNCATE="cut -b -$UTS_LEN"
 
   echo \#define LINUX_COMPILE_TIME \"`date +%T`\"
 
-  echo \#define LINUX_COMPILE_BY \"RmKernel\"
-  echo \#define LINUX_COMPILE_HOST \"RonGokhle\"
+  echo \#define LINUX_COMPILE_BY \"RonGokhle\"
+  echo \#define LINUX_COMPILE_HOST \"RmKernel\"
 
   if [ -x /bin/dnsdomainname ]; then
     domain=`dnsdomainname 2> /dev/null`
