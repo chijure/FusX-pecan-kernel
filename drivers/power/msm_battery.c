@@ -81,7 +81,7 @@ enum {
 #define BATTERY_CB_ID_ALL_ACTIV       	1
 #define BATTERY_CB_ID_LOW_VOL		2
 
-#define BATTERY_LOW            	2200
+#define BATTERY_LOW            	2800
 #define BATTERY_HIGH           	4300
 
 #define ONCRPC_CHG_GET_GENERAL_STATUS_PROC 	12
@@ -380,7 +380,7 @@ static int msm_batt_power_get_property(struct power_supply *psy,
 		val->intval = msm_batt_info.voltage_max_design;
 		break;
 	case POWER_SUPPLY_PROP_VOLTAGE_MIN_DESIGN:
-		val->intval = msm_batt_info.voltage_max_design*1000;
+		val->intval = msm_batt_info.voltage_min_design;
 		break;
 	case POWER_SUPPLY_PROP_VOLTAGE_NOW:
 		val->intval = msm_batt_info.battery_voltage;

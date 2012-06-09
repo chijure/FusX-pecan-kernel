@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.32.59-RM-32-PECAN
- * Thu Jun  7 01:13:15 2012
+ * Sat Jun  9 10:37:48 2012
  */
 #define AUTOCONF_INCLUDED
 #define CONFIG_VIDEO_V4L1_COMPAT 1
@@ -10,7 +10,6 @@
 #define CONFIG_JBD2 1
 #define CONFIG_COMPAT_BRK 1
 #define CONFIG_USB_ANDROID_RNDIS_WCEIS 1
-#define CONFIG_GENLOCK 1
 #define CONFIG_VIDEO_HELPER_CHIPS_AUTO 1
 #define CONFIG_CPU_FREQ_SAMPLING_LATENCY_MULTIPLIER 1000
 #define CONFIG_MSM_CPU_FREQ_MIN 480000
