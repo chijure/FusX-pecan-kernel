@@ -76,7 +76,7 @@ static void mcs7000_late_resume(struct early_suspend *h);
 #elif defined(CONFIG_MACH_MSM7X27_PECAN) 
 #define TS_POLLING_TIME 1 
 #else
-#define TS_POLLING_TIME 0 /* msec */
+#define TS_POLLING_TIME 1 /* msec */
 #endif
 
 #define DEBUG_TS 0 /* enable or disable debug message */
