@@ -109,8 +109,6 @@ static void mcs7000_late_resume(struct early_suspend *h);
 #define MCS7000_TS_MAX_HW_VERSION				0x40
 #define MCS7000_TS_MAX_FW_VERSION				0x20
 
-#define TS_SAMPLERATE_HZ 4
-
 struct mcs7000_ts_device {
 	struct i2c_client *client;
 	struct input_dev *input_dev;
@@ -240,7 +238,6 @@ static __inline void mcs7000_multi_ts_event_touch(int x1, int y1, int z1, int x2
 
 	if (report != 0) {
 		input_sync(dev->input_dev);
-		queue_delayed_work(dev->ts_wq, &dev->work, msecs_to_jiffies(HZ/TS_SAMPLERATE_HZ));
 	} else {
 		printk(KERN_WARNING "%s: Not Available touch data x1=%d, y1=%d, x2=%d, y2=%d\n", 
 				__FUNCTION__,  x1, y1, x2, y2);
@@ -389,7 +386,8 @@ static void mcs7000_work(struct work_struct *work)
 
 touch_retry:
 	if (dev->pendown) {
-		queue_delayed_work(dev->ts_wq, &dev->work, msecs_to_jiffies(HZ/TS_SAMPLERATE_HZ));
+		//ret = schedule_delayed_work(&dev->work, msecs_to_jiffies(TS_POLLING_TIME));
+		queue_delayed_work(dev->ts_wq, &dev->work,msecs_to_jiffies(TS_POLLING_TIME));
 	} else {
 		enable_irq(dev->num_irq);
 		DMSG("%s: irq enable\n", __FUNCTION__);
@@ -405,7 +403,7 @@ static irqreturn_t mcs7000_ts_irq_handler(int irq, void *handle)
 		disable_irq_nosync(dev->num_irq);
 		DMSG("%s: irq disable\n", __FUNCTION__);
 		//schedule_delayed_work(&dev->work, 0);
-		queue_delayed_work(dev->ts_wq, &dev->work, msecs_to_jiffies(HZ/TS_SAMPLERATE_HZ));
+		queue_delayed_work(dev->ts_wq, &dev->work,msecs_to_jiffies(TS_POLLING_TIME));
 	}
 
 	return IRQ_HANDLED;
