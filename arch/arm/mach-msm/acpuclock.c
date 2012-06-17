@@ -302,6 +302,7 @@ static struct pll_freq_tbl_map acpu_freq_tbl_list[] = {
 	PLL_CONFIG(196, 960, 1056),
 	PLL_CONFIG(245, 960, 1056),
 	PLL_CONFIG(196, 960, 1200),
+
 	PLL_CONFIG(245, 960, 1200),
 	PLL_CONFIG(960, 196, 1200),
 	PLL_CONFIG(960, 245, 1200),
