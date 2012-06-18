@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.32.59-RM-32-PECAN
- * Mon Jun 18 19:46:35 2012
+ * Mon Jun 18 20:18:07 2012
  */
 #define AUTOCONF_INCLUDED
 #define CONFIG_VIDEO_V4L1_COMPAT 1
@@ -342,6 +342,7 @@
 #define CONFIG_CPU_FREQ_GOV_ONDEMAND 1
 #define CONFIG_LGE_PWRSINK 1
 #define CONFIG_PRINTK_TIME 1
+#define CONFIG_XVMALLOC 1
 #define CONFIG_FB_CFB_FILLRECT 1
 #define CONFIG_LGE_UMS_WORKAROUND_PATCH 1
 #define CONFIG_BATTERY_MSM 1

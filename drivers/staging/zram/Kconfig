@@ -1,8 +1,12 @@
+config XVMALLOC
+	bool
+	default n
+
 config ZRAM
 	tristate "Compressed RAM block device support"
-	depends on BLOCK
 	select LZO_COMPRESS
 	select LZO_DECOMPRESS
+	select XVMALLOC
 	default n
 	help
 	  Creates virtual block devices called /dev/zramX (X = 0, 1, ...).
@@ -14,4 +18,33 @@ config ZRAM
 	  disks and maybe many more.
 
 	  See zram.txt for more information.
+	  Project home: http://compcache.googlecode.com/
+
+config ZRAM_STATS
+	bool "Enable statistics for compressed RAM disks"
+	depends on ZRAM
+	default y
+	help
+	  Enable statistics collection for compressed RAM devices. Statistics
+	  are exported through ioctl interface, so you have to use zramconfig
+	  program to get them. This adds only a minimal overhead.
+
+	  If unsure, say Y.
+
+config ZCACHE
+	bool "Page cache compression support"
+	depends on CLEANCACHE
+	select XVMALLOC
+	select LZO_COMPRESS
+	select LZO_DECOMPRESS
+	default n
+	help
+	  Compresses relatively unused page cache pages and stores them in
+	  memory itself. This increases effective memory size and can help
+	  reduce access to backing store device(s) which is typically much
+	  slower than access to main memory.
+
+	  Statistics are expoted through sysfs interface:
+	  /sys/kernel/mm/zcache/
+
 	  Project home: http://compcache.googlecode.com/
