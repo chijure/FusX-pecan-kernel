@@ -679,7 +679,7 @@ static int kgsl_yamato_start(struct kgsl_device *device)
 	/* The core is in an indeterminate state until the reset completes
 	 * after 50ms.
 	 */
-	msleep(50);
+	msleep(10);
 
 	kgsl_yamato_regwrite(device, REG_RBBM_SOFT_RESET, 0x00000000);
 
