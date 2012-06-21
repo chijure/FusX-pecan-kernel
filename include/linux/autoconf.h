@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.32.59-RM-32-PECAN
- * Wed Jun 20 17:54:42 2012
+ * Thu Jun 21 11:50:05 2012
  */
 #define AUTOCONF_INCLUDED
 #define CONFIG_VIDEO_V4L1_COMPAT 1
@@ -730,6 +730,7 @@
 #define CONFIG_CPU_FREQ_GOV_MINMAX 1
 #define CONFIG_EVENT_TRACING 1
 #define CONFIG_NETDEVICES 1
+#define CONFIG_ZRAM_NUM_DEVICES 1
 #define CONFIG_USB_GADGET_DUALSPEED 1
 #define CONFIG_PPP_SYNC_TTY 1
 #define CONFIG_WAKELOCK_STAT 1
