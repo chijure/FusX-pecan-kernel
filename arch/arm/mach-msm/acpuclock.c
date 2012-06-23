@@ -120,6 +120,11 @@ static void __init acpuclk_init(void);
 /* 7x01/7x25 normal with GSM capable modem */
 static struct clkctl_acpu_speed pll0_245_pll1_768_pll2_1056[] = {
 	{ 0, 19200, ACPU_PLL_TCXO, 0, 0, 19200, 0, 0, 30720 },
+#ifdef CONFIG_MSM_CPU_FREQ_UNDERCLOCK
+	{ 1, 30720, ACPU_PLL_0, 4, 7, 15360, 1, 1, 15360 },
+	{ 1, 49152, ACPU_PLL_0, 4, 4, 24576, 1, 2, 24576 },
+	{ 1, 61440, ACPU_PLL_0, 4, 3, 30720, 1, 2, 30720 },
+#endif
 	{ 1, 122880, ACPU_PLL_0, 4, 1,  61440, 1, 3,  61440 },
 	{ 0, 128000, ACPU_PLL_1, 1, 5,  64000, 1, 3,  61440 },
 	{ 0, 176000, ACPU_PLL_2, 2, 5,  88000, 1, 3,  61440 },
@@ -134,6 +139,11 @@ static struct clkctl_acpu_speed pll0_245_pll1_768_pll2_1056[] = {
 /* 7x01/7x25 normal with CDMA-only modem */
 static struct clkctl_acpu_speed pll0_196_pll1_768_pll2_1056[] = {
 	{ 0, 19200, ACPU_PLL_TCXO, 0, 0, 19200, 0, 0, 24576 },
+#ifdef CONFIG_MSM_CPU_FREQ_UNDERCLOCK
+	{ 1, 30720, ACPU_PLL_0, 4, 7, 15360, 1, 1, 15360 },
+	{ 1, 49152, ACPU_PLL_0, 4, 4, 24576, 1, 2, 24576 },
+	{ 1, 61440, ACPU_PLL_0, 4, 3, 30720, 1, 2, 30720 },
+#endif
 	{ 1,  98304, ACPU_PLL_0, 4, 1,  49152, 1, 3,  24576 },
 	{ 0, 128000, ACPU_PLL_1, 1, 5,  64000, 1, 3,  24576 },
 	{ 0, 176000, ACPU_PLL_2, 2, 5,  88000, 1, 3,  24576 },
@@ -148,6 +158,11 @@ static struct clkctl_acpu_speed pll0_196_pll1_768_pll2_1056[] = {
 /* 7x01/7x25 turbo with GSM capable modem */
 static struct clkctl_acpu_speed pll0_245_pll1_960_pll2_1056[] = {
 	{ 0, 19200, ACPU_PLL_TCXO, 0, 0, 19200, 0, 0, 30720 },
+#ifdef CONFIG_MSM_CPU_FREQ_UNDERCLOCK
+	{ 1, 30720, ACPU_PLL_0, 4, 7, 15360, 1, 1, 15360 },
+	{ 1, 49152, ACPU_PLL_0, 4, 4, 24576, 1, 2, 24576 },
+	{ 1, 61440, ACPU_PLL_0, 4, 3, 30720, 1, 2, 30720 },
+#endif
 	{ 0, 120000, ACPU_PLL_1, 1, 7,  60000, 1, 3,  61440 },
 	{ 1, 122880, ACPU_PLL_0, 4, 1,  61440, 1, 3,  61440 },
 	{ 0, 176000, ACPU_PLL_2, 2, 5,  88000, 1, 3,  61440 },
@@ -162,6 +177,11 @@ static struct clkctl_acpu_speed pll0_245_pll1_960_pll2_1056[] = {
 /* 7x01/7x25 turbo with CDMA-only modem */
 static struct clkctl_acpu_speed pll0_196_pll1_960_pll2_1056[] = {
 	{ 0, 19200, ACPU_PLL_TCXO, 0, 0, 19200, 0, 0, 24576 },
+#ifdef CONFIG_MSM_CPU_FREQ_UNDERCLOCK
+	{ 1, 30720, ACPU_PLL_0, 4, 7, 15360, 1, 1, 15360 },
+	{ 1, 49152, ACPU_PLL_0, 4, 4, 24576, 1, 2, 24576 },
+	{ 1, 61440, ACPU_PLL_0, 4, 3, 30720, 1, 2, 30720 },
+#endif
 	{ 1,  98304, ACPU_PLL_0, 4, 1,  49152, 1, 3,  24576 },
 	{ 0, 120000, ACPU_PLL_1, 1, 7,  60000, 1, 3,  24576 },
 	{ 0, 176000, ACPU_PLL_2, 2, 5,  88000, 1, 3,  24576 },
@@ -176,6 +196,11 @@ static struct clkctl_acpu_speed pll0_196_pll1_960_pll2_1056[] = {
 /* 7x27 normal with GSM capable modem */
 static struct clkctl_acpu_speed pll0_245_pll1_960_pll2_1200[] = {
 	{ 0, 19200, ACPU_PLL_TCXO, 0, 0, 19200, 0, 0, 30720 },
+#ifdef CONFIG_MSM_CPU_FREQ_UNDERCLOCK
+	{ 1, 30720, ACPU_PLL_0, 4, 7, 15360, 1, 1, 15360 },
+	{ 1, 49152, ACPU_PLL_0, 4, 4, 24576, 1, 2, 24576 },
+	{ 1, 61440, ACPU_PLL_0, 4, 3, 30720, 1, 2, 30720 },
+#endif
 	{ 0, 120000, ACPU_PLL_1, 1, 7,  60000, 1, 3,  61440 },
 	{ 1, 122880, ACPU_PLL_0, 4, 1,  61440, 1, 3,  61440 },
 	{ 0, 200000, ACPU_PLL_2, 2, 5,  66667, 2, 4,  61440 },
@@ -190,6 +215,11 @@ static struct clkctl_acpu_speed pll0_245_pll1_960_pll2_1200[] = {
 /* 7x27 normal with CDMA-only modem */
 static struct clkctl_acpu_speed pll0_196_pll1_960_pll2_1200[] = {
 	{ 0, 19200, ACPU_PLL_TCXO, 0, 0, 19200, 0, 0, 24576 },
+#ifdef CONFIG_MSM_CPU_FREQ_UNDERCLOCK
+	{ 1, 30720, ACPU_PLL_0, 4, 7, 15360, 1, 1, 15360 },
+	{ 1, 49152, ACPU_PLL_0, 4, 4, 24576, 1, 2, 24576 },
+	{ 1, 61440, ACPU_PLL_0, 4, 3, 30720, 1, 2, 30720 },
+#endif
 	{ 1,  98304, ACPU_PLL_0, 4, 1,  98304, 0, 3,  49152 },
 	{ 0, 120000, ACPU_PLL_1, 1, 7,  60000, 1, 3,  49152 },
 	{ 1, 196608, ACPU_PLL_0, 4, 0,  65536, 2, 4,  98304 },
@@ -197,6 +227,7 @@ static struct clkctl_acpu_speed pll0_196_pll1_960_pll2_1200[] = {
 	{ 1, 320000, ACPU_PLL_1, 1, 2, 160000, 1, 5, 120000 },
 	{ 0, 400000, ACPU_PLL_2, 2, 2, 133333, 2, 5, 120000 },
 	{ 1, 480000, ACPU_PLL_1, 1, 1, 160000, 2, 6, 120000 },
+        { 1, 528000, ACPU_PLL_2, 2, 1, 182400, 2, 7, 128000 },
 	{ 1, 600000, ACPU_PLL_2, 2, 1, 200000, 2, 7, 120000 },
 	{ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, {0, 0, 0}, {0, 0, 0} }
 };
@@ -204,6 +235,11 @@ static struct clkctl_acpu_speed pll0_196_pll1_960_pll2_1200[] = {
 /* 7x27 normal with GSM capable modem - PLL0 and PLL1 swapped */
 static struct clkctl_acpu_speed pll0_960_pll1_245_pll2_1200[] = {
 	{ 0, 19200, ACPU_PLL_TCXO, 0, 0, 19200, 0, 0, 30720 },
+#ifdef CONFIG_MSM_CPU_FREQ_UNDERCLOCK
+	{ 1, 32768, ACPU_PLL_0, 4, 5, 16384, 1, 1, 16384 },
+	{ 1, 49152, ACPU_PLL_0, 4, 3, 24576, 1, 2, 24576 },
+	{ 1, 65536, ACPU_PLL_0, 4, 2, 32768, 1, 2, 24576 },
+#endif
 	{ 0, 120000, ACPU_PLL_0, 4, 7,  60000, 1, 3,  61440 },
 	{ 1, 122880, ACPU_PLL_1, 1, 1,  61440, 1, 2,  61440 }, //3
 	{ 0, 200000, ACPU_PLL_2, 2, 5,  66667, 2, 4,  61440 },
@@ -211,6 +247,7 @@ static struct clkctl_acpu_speed pll0_960_pll1_245_pll2_1200[] = {
 	{ 1, 320000, ACPU_PLL_0, 4, 2, 160000, 1, 4, 122880 }, //5
 	{ 0, 400000, ACPU_PLL_2, 2, 2, 133333, 2, 5, 122880 },
 	{ 1, 480000, ACPU_PLL_0, 4, 1, 160000, 2, 5, 122880 }, //6
+        { 1, 528000, ACPU_PLL_2, 2, 1, 182400, 2, 7, 128000 },
 	{ 1, 600000, ACPU_PLL_2, 2, 1, 200000, 2, 6, 122880 }, //7
 #ifndef OVERCLOCK_AHB
 /* Conservative AHB overclocking */
@@ -264,6 +301,11 @@ static struct clkctl_acpu_speed pll0_960_pll1_245_pll2_1200[] = {
 /* 7x27 normal with CDMA-only modem - PLL0 and PLL1 swapped */
 static struct clkctl_acpu_speed pll0_960_pll1_196_pll2_1200[] = {
 	{ 0, 19200, ACPU_PLL_TCXO, 0, 0, 19200, 0, 0, 24576 },
+#ifdef CONFIG_MSM_CPU_FREQ_UNDERCLOCK
+	{ 1, 30720, ACPU_PLL_0, 4, 7, 15360, 1, 1, 15360 },
+	{ 1, 49152, ACPU_PLL_0, 4, 4, 24576, 1, 2, 24576 },
+	{ 1, 61440, ACPU_PLL_0, 4, 3, 30720, 1, 2, 30720 },
+#endif
 	{ 1,  98304, ACPU_PLL_1, 1, 1,  98304, 0, 3,  49152 },
 	{ 0, 120000, ACPU_PLL_0, 4, 7,  60000, 1, 3,  49152 },
 	{ 1, 196608, ACPU_PLL_1, 1, 0,  65536, 2, 4,  98304 },
@@ -278,6 +320,11 @@ static struct clkctl_acpu_speed pll0_960_pll1_196_pll2_1200[] = {
 /* 7x27 normal with GSM capable modem - PLL0 and PLL1 swapped and pll2 @ 800 */
 static struct clkctl_acpu_speed pll0_960_pll1_245_pll2_800[] = {
 	{ 0, 19200, ACPU_PLL_TCXO, 0, 0, 19200, 0, 0, 30720 },
+#ifdef CONFIG_MSM_CPU_FREQ_UNDERCLOCK
+	{ 1, 30720, ACPU_PLL_0, 4, 7, 15360, 1, 1, 15360 },
+	{ 1, 49152, ACPU_PLL_0, 4, 4, 24576, 1, 2, 24576 },
+	{ 1, 61440, ACPU_PLL_0, 4, 3, 30720, 1, 2, 30720 },
+#endif
 	{ 0, 120000, ACPU_PLL_0, 4, 7,  60000, 1, 3,  61440 },
 	{ 1, 122880, ACPU_PLL_1, 1, 1,  61440, 1, 3,  61440 },
 	{ 0, 200000, ACPU_PLL_2, 2, 3,  66667, 2, 4,  61440 },
@@ -292,6 +339,11 @@ static struct clkctl_acpu_speed pll0_960_pll1_245_pll2_800[] = {
 /* 7x27 normal with CDMA-only modem - PLL0 and PLL1 swapped and pll2 @ 800 */
 static struct clkctl_acpu_speed pll0_960_pll1_196_pll2_800[] = {
 	{ 0, 19200, ACPU_PLL_TCXO, 0, 0, 19200, 0, 0, 24576 },
+#ifdef CONFIG_MSM_CPU_FREQ_UNDERCLOCK
+	{ 1, 30720, ACPU_PLL_0, 4, 7, 15360, 1, 1, 15360 },
+	{ 1, 49152, ACPU_PLL_0, 4, 4, 24576, 1, 2, 24576 },
+	{ 1, 61440, ACPU_PLL_0, 4, 3, 30720, 1, 2, 30720 },
+#endif
 	{ 1,  98304, ACPU_PLL_1, 1, 1,  98304, 0, 3,  49152 },
 	{ 0, 120000, ACPU_PLL_0, 4, 7,  60000, 1, 3,  49152 },
 	{ 1, 196608, ACPU_PLL_1, 1, 0,  65536, 2, 4,  98304 },
