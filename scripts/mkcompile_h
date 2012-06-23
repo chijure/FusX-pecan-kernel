@@ -65,8 +65,10 @@ UTS_TRUNCATE="cut -b -$UTS_LEN"
 
   echo \#define LINUX_COMPILE_TIME \"`date +%T`\"
 
-  echo \#define LINUX_COMPILE_BY \"RonGokhle\"
+  echo \#define LINUX_COMPILE_BY \"`whoami`\"
   echo \#define LINUX_COMPILE_HOST \"RmKernel\"
+# RON_CHANGE print RmKernel instead of hostname in kernel release version string
+# cips173@gmail.com.com, 2012-06-23
 
   if [ -x /bin/dnsdomainname ]; then
     domain=`dnsdomainname 2> /dev/null`
