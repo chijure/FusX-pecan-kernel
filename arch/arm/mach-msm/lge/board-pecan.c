@@ -212,6 +212,8 @@ static struct msm_acpu_clock_platform_data msm7x2x_clock_data = {
 	.max_axi_khz = 160000,
 };
 
+static void msm_hsusb_vbus_power(unsigned phy_info, int on);
+
 void msm_serial_debug_init(unsigned int base, int irq,
 			   struct device *clk_device, int signal_irq);
 
