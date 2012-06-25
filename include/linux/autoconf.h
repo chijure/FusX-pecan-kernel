@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.32.59
- * Sun Jun 24 21:05:44 2012
+ * Mon Jun 25 23:26:23 2012
  */
 #define AUTOCONF_INCLUDED
 #define CONFIG_VIDEO_V4L1_COMPAT 1
@@ -355,6 +355,7 @@
 #define CONFIG_SCSI_MULTI_LUN 1
 #define CONFIG_PHYS_OFFSET 0x02800000
 #define CONFIG_ARCH_MSM 1
+#define CONFIG_YAFFS_XATTR 1
 #define CONFIG_BLOCK 1
 #define CONFIG_GENERIC_CLOCKEVENTS_BUILD 1
 #define CONFIG_GENERIC_HWEIGHT 1
@@ -418,6 +419,7 @@
 #define CONFIG_UEVENT_HELPER_PATH "/sbin/hotplug"
 #define CONFIG_YAFFS_YAFFS2 1
 #define CONFIG_RTC_INTF_ALARM_DEV 1
+#define CONFIG_YAFFS_DISABLE_TAGS_ECC 1
 #define CONFIG_RTC_HCTOSYS_DEVICE "rtc0"
 #define CONFIG_PPPOE 1
 #define CONFIG_LGE_HANDLE_MODEM_CRASH 1
