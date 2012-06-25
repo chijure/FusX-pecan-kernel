@@ -179,13 +179,13 @@ int pecan_vibrator_power_set(int enable)
 			//printk(KERN_INFO "vibrator power was enabled, already\n");
 			return 0;
 		}
-		
+
 		/* 3300 mV for Motor IC */				
 		if (aat28xx_ldo_set_level(dev, 1, VIBE_IC_VOLTAGE) < 0) {
 			printk(KERN_ERR "%s: vibrator LDO set failed\n", __FUNCTION__);
 			return -EIO;
 		}
-		
+
 		if (aat28xx_ldo_enable(dev, 1, 1) < 0) {
 			printk(KERN_ERR "%s: vibrator LDO enable failed\n", __FUNCTION__);
 			return -EIO;
@@ -196,12 +196,12 @@ int pecan_vibrator_power_set(int enable)
 			//printk(KERN_INFO "vibrator power was disabled, already\n");
 			return 0;
 		}
-		
+
 		if (aat28xx_ldo_set_level(dev, 1, 0) < 0) {		
 			printk(KERN_ERR "%s: vibrator LDO set failed\n", __FUNCTION__);
 			return -EIO;
 		}
-		
+
 		if (aat28xx_ldo_enable(dev, 1, 0) < 0) {
 			printk(KERN_ERR "%s: vibrator LDO disable failed\n", __FUNCTION__);
 			return -EIO;
@@ -228,7 +228,7 @@ int pecan_vibrator_pwm_set(int enable, int amp)
 		gpio_tlmm_config(GPIO_CFG(GPIO_LIN_MOTOR_PWM, 0, GPIO_OUTPUT, GPIO_PULL_DOWN, GPIO_2MA), GPIO_ENABLE);
 		gpio_direction_output(GPIO_LIN_MOTOR_PWM, 0);
 	}
-	
+
 	return 0;
 }
 
@@ -306,7 +306,7 @@ static int pecan_gpio_earsense_work_func(void)
 		ept = NULL;
 		printk(KERN_ERR"failed to connect snd svc, error %d\n", rc);
 	}
-	
+
 	hookmsg.args.cb_func = -1;
 	hookmsg.args.client_data = 0;
 
