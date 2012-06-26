@@ -38,7 +38,8 @@
 #include <linux/irq.h>
 
 #include <mach/vreg.h>
-struct vreg {
+struct vreg 
+{
 	const char *name;
 	unsigned id;
 	int status;
@@ -53,14 +54,7 @@ static void mcs6000_early_suspend(struct early_suspend *h);
 static void mcs6000_late_resume(struct early_suspend *h);
 #endif
 
-#define LG_FW_HARDKEY_BLOCK
-#define LG_FW_MULTI_TOUCH
-//#define LG_FW_TOUCH_SOFT_KEY 1
-#define TOUCH_SEARCH    247
-#define TOUCH_BACK      248
-
-/* shoud be checked, what is the difference, TOUCH_SEARCH and KEY_SERACH, TOUCH_BACK  and KEY_BACK */
-//#define LG_FW_AUDIO_HAPTIC_TOUCH_SOFT_KEY
+#define TS_SAMPLERATE_HZ 100
 
 #define TS_POLLING_TIME 10 /* msec */
 #define TS_POLLING_BOUNCE 	100
@@ -94,21 +88,24 @@ static void mcs6000_late_resume(struct early_suspend *h);
 #define MCS6000_TS_MAX_HW_VERSION				0x40
 #define MCS6000_TS_MAX_FW_VERSION				0x20
 
-struct mcs6000_ts_device {
-	struct i2c_client *client;
-	struct input_dev *input_dev;
-	struct delayed_work work;
+
+struct mcs6000_ts_device
+{
+  struct i2c_client *client;
+  struct input_dev *input_dev;
+  struct delayed_work work;
+  int num_irq;
+  int intr_gpio;
+  int scl_gpio;
+  int sda_gpio;
+  bool pendown;
+  int (*power)(unsigned char onoff);
+  struct workqueue_struct *ts_wq;
 #ifdef LG_FW_HARDKEY_BLOCK
 	struct hrtimer touch_timer;
 	bool hardkey_block;
 #endif
-	int num_irq;
-	int intr_gpio;
-	int scl_gpio;
-	int sda_gpio;
-	bool pendown;
-	int (*power)(unsigned char onoff);
-	struct workqueue_struct *ts_wq;
+	
 };
 
 static struct input_dev *mcs6000_ts_input = NULL;
@@ -119,13 +116,15 @@ static int when_resuming = 300;
 
 #define READ_NUM 8 /* now, just using two finger data */
 
-enum{
-	NON_TOUCHED_STATE,
-	SINGLE_POINT_TOUCH,
-	MULTI_POINT_TOUCH,
-	MAX_TOUCH_TYPE
-};
 
+enum
+{
+  NON_TOUCHED_STATE,
+  SINGLE_POINT_TOUCH,
+  MULTI_POINT_TOUCH,
+  MAX_TOUCH_TYPE
+
+};
 #if defined(CONFIG_MACH_MSM7X27_PECAN) || defined(CONFIG_MACH_MSM7X27_HAZEL)
 enum{
 	NO_KEY_TOUCHED = 0,
@@ -135,13 +134,7 @@ enum{
 	KEY_SEARCH_TOUCHED = 4	
 };
 #else
-enum{
-	NO_KEY_TOUCHED,
-	KEY1_TOUCHED,
-	KEY2_TOUCHED,
-	KEY3_TOUCHED,
-	MAX_KEY_TOUCH
-};
+
 #endif
 
 static __inline void mcs6000_key_event_touch(int touch_reg,  int value,  struct mcs6000_ts_device *dev)
