@@ -166,6 +166,13 @@ config SPLIT_PTLOCK_CPUS
 	default "4"
 
 #
+# support for memory compaction
+#
+config CLEANCACHE
+	bool "Enable cleancache driver to cache clean pages if tmem is present"
+	default y
+
+#
 # support for page migration
 #
 config MIGRATION
