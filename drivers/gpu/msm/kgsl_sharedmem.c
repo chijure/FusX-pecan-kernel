@@ -280,9 +280,6 @@ kgsl_sharedmem_free(struct kgsl_memdesc *memdesc)
 
 	BUG_ON(memdesc == NULL);
 	BUG_ON(memdesc->size <= 0);
-	BUG_ON(shmem->physbase > memdesc->physaddr);
-	BUG_ON((shmem->physbase + shmem->size)
-	       < (memdesc->physaddr + memdesc->size));
 
 	gen_pool_free(shmem->pool, memdesc->physaddr, memdesc->size);
 
