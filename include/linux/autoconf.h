@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.32.59
- * Thu Jun 28 00:54:50 2012
+ * Thu Jun 28 01:29:04 2012
  */
 #define AUTOCONF_INCLUDED
 #define CONFIG_VIDEO_V4L1_COMPAT 1
@@ -223,6 +223,7 @@
 #define CONFIG_NF_NAT_PROTO_DCCP 1
 #define CONFIG_TEXTSEARCH_KMP 1
 #define CONFIG_NETFILTER_ADVANCED 1
+#define CONFIG_CPU_FREQ_GOV_HOTPLUG 1
 #define CONFIG_OUTER_CACHE 1
 #define CONFIG_SND_MSM_SOC_MSM7K 1
 #define CONFIG_PAGE_OFFSET 0xC0000000

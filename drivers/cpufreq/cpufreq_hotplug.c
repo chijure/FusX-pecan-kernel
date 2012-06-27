@@ -143,7 +143,7 @@ static inline cputime64_t get_cpu_idle_time(unsigned int cpu, cputime64_t *wall)
 
 	/* add time spent doing I/O to idle time */
 	if (dbs_tuners_ins.io_is_busy) {
-		iowait_time = get_cpu_iowait_time_us(cpu, wall);
+//		iowait_time = get_cpu_iowait_time_us(cpu, wall);
 		/* cpufreq-hotplug always assumes CONFIG_NO_HZ */
 		if (iowait_time != -1ULL && idle_time >= iowait_time)
 			idle_time -= iowait_time;
@@ -421,15 +421,15 @@ define_one_global_rw(ignore_nice_load);
 define_one_global_rw(io_is_busy);
 
 static struct attribute *dbs_attributes[] = {
-	&sampling_rate.attr,
-	&up_threshold.attr,
-	&down_threshold.attr,
-	&hotplug_in_threshold.attr,
-	&hotplug_out_threshold.attr,
-	&hotplug_in_sampling_periods.attr,
-	&hotplug_out_sampling_periods.attr,
-	&ignore_nice_load.attr,
-	&io_is_busy.attr,
+//	&sampling_rate.attr,
+//	&up_threshold.attr,
+//	&down_threshold.attr,
+//	&hotplug_in_threshold.attr,
+//	&hotplug_out_threshold.attr,
+//	&hotplug_in_sampling_periods.attr,
+//	&hotplug_out_sampling_periods.attr,
+//	&ignore_nice_load.attr,
+//	&io_is_busy.attr,
 	NULL
 };
 
@@ -574,7 +574,8 @@ static void dbs_check_cpu(struct cpu_dbs_info_s *this_dbs_info)
 		unsigned int new_freq = 0;
 
 		/* scale down to the next lowest freq in the table */
-		if (cpufreq_frequency_table_next_lowest(policy,
+//		if (cpufreq_frequency_table_next_lowest
+                                                       (policy,
 				this_dbs_info->freq_table, &index)) {
 			pr_err("%s: failed to get next lowest freq\n",
 				__func__);
@@ -615,7 +616,7 @@ static void do_cpu_up(struct work_struct *work)
 
 static void do_cpu_down(struct work_struct *work)
 {
-	cpu_down(1);
+//	cpu_down(1);
 }
 
 static void do_dbs_timer(struct work_struct *work)
