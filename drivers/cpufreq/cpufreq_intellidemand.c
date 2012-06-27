@@ -171,12 +171,12 @@ static inline cputime64_t get_cpu_idle_time(unsigned int cpu, cputime64_t *wall)
 
 static inline cputime64_t get_cpu_iowait_time(unsigned int cpu, cputime64_t *wall)
 {
-	u64 iowait_time = get_cpu_iowait_time_us(cpu, wall);
+//	u64 iowait_time = get_cpu_iowait_time_us(cpu, wall);
 
-	if (iowait_time == -1ULL)
+//	if (iowait_time == -1ULL)
 		return 0;
 
-	return iowait_time;
+//	return iowait_time;
 }
 
 /*
@@ -448,15 +448,7 @@ define_one_global_rw(lmf_active_load);
 define_one_global_rw(lmf_inactive_load);
 #endif
 static struct attribute *dbs_attributes[] = {
-	&sampling_rate_max.attr,
-	&sampling_rate_min.attr,
-	&sampling_rate.attr,
-	&up_threshold.attr,
-	&down_differential.attr,
-	&sampling_down_factor.attr,
-	&ignore_nice_load.attr,
-	&powersave_bias.attr,
-	&io_is_busy.attr,
+	
 #ifdef CONFIG_SEC_LIMIT_MAX_FREQ // limit max freq
 	&lmf_temp.attr,
 	&lmf_browser.attr,
@@ -519,7 +511,7 @@ static void dbs_check_cpu(struct cpu_dbs_info_s *this_dbs_info)
 		j_dbs_info = &per_cpu(od_cpu_dbs_info, j);
 
 		cur_idle_time = get_cpu_idle_time(j, &cur_wall_time);
-		cur_iowait_time = get_cpu_iowait_time(j, &cur_wall_time);
+//		cur_iowait_time = get_cpu_iowait_time(j, &cur_wall_time);
 
 		wall_time = (unsigned int) cputime64_sub(cur_wall_time,
 				j_dbs_info->prev_cpu_wall);

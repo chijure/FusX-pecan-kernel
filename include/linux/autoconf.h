@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.32.59
- * Wed Jun 27 16:37:19 2012
+ * Thu Jun 28 00:54:50 2012
  */
 #define AUTOCONF_INCLUDED
 #define CONFIG_VIDEO_V4L1_COMPAT 1
@@ -669,6 +669,7 @@
 #define CONFIG_MTD_TESTS_MODULE 1
 #define CONFIG_NF_NAT_AMANDA 1
 #define CONFIG_PRINTK 1
+#define CONFIG_CPU_FREQ_GOV_INTELLIDEMAND 1
 #define CONFIG_POWER_SUPPLY 1
 #define CONFIG_AIO 1
 #define CONFIG_BT_SCO 1
