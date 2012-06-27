@@ -90,6 +90,82 @@ static int adv7520_write_reg(struct i2c_client *client, u8 reg, u8 val)
 }
 
 
+#ifdef HDCP_ENABLE
+static void adv7520_close_hdcp_link(void)
+{
+
+	reg[0xD5] = adv7520_read_reg(hclient, 0xD5);
+	/* reg[0xD5] &= 0xFE; */
+	reg[0xD5] = 0xFE;
+	adv7520_write_reg(hclient, 0xD5, (u8)reg[0xD5]);
+
+	reg[0x16] = adv7520_read_reg(hclient, 0x16);
+	/* reg[0x16]  &= 0xFE; */
+	reg[0x16] = 0xFE;
+	adv7520_write_reg(hclient, 0x16, (u8)reg[0x16]);
+
+	/* Mute Audio */
+	reg[0x0C] = adv7520_read_reg(hclient, 0x0C);
+	/* reg[0x0C]  &= 0xC3; */
+	reg[0x0C] = 0xC3;
+	adv7520_write_reg(hclient, 0x0C, (u8)reg[0x0C]);
+
+	printk(KERN_INFO"\n Putting TV Audio to Mute\n");
+}
+
+static void adv7520_hdcp_enable(struct work_struct *work)
+{
+	printk(KERN_INFO "Starting HDCP ");
+
+	/* Set HDCP request Bit */
+	reg[0xAF] = adv7520_read_reg(hclient, 0xAF);
+	reg[0xAF] |= 0x90;
+	adv7520_write_reg(hclient, 0xaf, (u8)reg[0xaf]);
+	reg[0xAF] = adv7520_read_reg(hclient, 0xAF);
+	printk(KERN_INFO"\n HDCP request reg[0xaf] is %x\n" , reg[0xaf]);
+
+	msleep(20);
+	/* Wait for BKSV ready interrupt */
+	/* Read BKSV's keys from HDTV */
+	reg[0xBF] = adv7520_read_reg(hclient, 0xBF);
+	reg[0xC0] = adv7520_read_reg(hclient, 0xC0);
+	reg[0xC1] = adv7520_read_reg(hclient, 0xC1);
+	reg[0xC2] = adv7520_read_reg(hclient, 0xC2);
+	reg[0xc3] = adv7520_read_reg(hclient, 0xC3);
+
+	printk(KERN_INFO "\n  BKSV[1] is %x\n ", reg[0xbf]);
+	printk(KERN_INFO "\n  BKSV[2] is %x\n ", reg[0xc0]);
+	printk(KERN_INFO "\n  BKSV[3] is %x\n ", reg[0xc1]);
+	printk(KERN_INFO "\n  BKSV[4] is %x\n ", reg[0xc2]);
+	printk(KERN_INFO "\n  BKSV[5] is %x\n ", reg[0xc3]);
+
+	/* Is SINK repeater */
+	reg[0xBE] = adv7520_read_reg(hclient, 0xBE);
+	printk(KERN_INFO"\n Sink Repeater reg is %x\n", reg[0xbe]);
+
+	if (~(reg[0xBE] & 0x40)) {
+		; /* compare with revocation list */
+		/* Check 20 1's and 20 zero's */
+	} else {
+		/* Don't implement HDCP if sink as a repeater */
+		return;
+	}
+
+
+	msleep(20);
+	reg[0xB8] = adv7520_read_reg(hclient, 0xB8);
+	printk(KERN_INFO "\n HDCP Status  reg is reg[0xB8 is %x\n", reg[0xb8]);
+	if ((reg[0xb8] & 0x40) || (reg[0xb8] & 0x10)) {
+		printk(KERN_INFO "Closing the HDMI link");
+		adv7520_close_hdcp_link();
+	}
+}
+
+static void adv7520_hdcp_work_queue(void)
+{
+	schedule_work(&hdcp_handle_work);
+}
+#endif
 
 /*  Power ON/OFF  ADV7520 chip */
 static int adv7520_power_on(struct platform_device *pdev)
@@ -188,6 +264,16 @@ static void adv7520_enable(void)
 	/* Get the "HDMI/DVI Selection" register. */
 	reg[0xaf] = adv7520_read_reg(hclient, 0xaf);
 
+	/*  Register for internal HDCP key location */
+	reg[0xba] = adv7520_read_reg(hclient, 0xba);
+	printk(KERN_INFO "initial reg[0xba] is %x\n", reg[0xba]);
+
+	reg[0xba] = 0x10;
+	adv7520_write_reg(hclient, 0xba, reg[0xba]);
+	reg[0xba] = adv7520_read_reg(hclient, 0xba);
+	printk(KERN_INFO "Final reg[0xba] is %x\n", reg[0xba]);
+
+
 	/* Hard coded values provided by ADV7520 data sheet. */
 	reg[0x98] = 0x03;
 	reg[0x9c] = 0x38;
@@ -196,8 +282,13 @@ static void adv7520_enable(void)
 	reg[0xa3] = 0x94;
 	reg[0xde] = 0x88;
 
+#ifdef HDCP_ENABLE
+	/* Set the HDMI/HDCP select bit. */
+	reg[0xaf] |= 0x96;
+#else
 	/* Set the HDMI select bit. */
 	reg[0xaf] |= 0x16;
+#endif
 
 	/* Set the audio related registers. */
 	reg[0x01] = 0x00;
@@ -255,7 +346,6 @@ static void adv7520_enable(void)
 	adv7520_write_reg(hclient, 0x16, reg[0x16]);
 	adv7520_write_reg(hclient, 0x18, reg[0x18]);
 	adv7520_write_reg(hclient, 0x55, reg[0x55]);
-	adv7520_write_reg(hclient, 0xba, reg[0xba]);
 	adv7520_write_reg(hclient, 0x3c, reg[0x3c]);
 
 }
@@ -307,8 +397,8 @@ static struct i2c_driver hdmi_i2c_driver = {
 	.driver		= {
 		.name   = ADV7520_DRV_NAME,
 	},
-	.probe 		= adv7520_probe,
-	.id_table 	= adv7520_id,
+	.probe		= adv7520_probe,
+	.id_table	= adv7520_id,
 	.remove		= __devexit_p(adv7520_remove),
 };
 
