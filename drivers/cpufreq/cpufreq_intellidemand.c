@@ -448,6 +448,15 @@ define_one_global_rw(lmf_active_load);
 define_one_global_rw(lmf_inactive_load);
 #endif
 static struct attribute *dbs_attributes[] = {
+//      &sampling_rate_max.attr,
+//	&sampling_rate_min.attr,
+//	&sampling_rate.attr,
+//	&up_threshold.attr,
+//	&down_differential.attr,
+//	&sampling_down_factor.attr,
+//	&ignore_nice_load.attr,
+//	&powersave_bias.attr,
+//	&io_is_busy.attr,
 	
 #ifdef CONFIG_SEC_LIMIT_MAX_FREQ // limit max freq
 	&lmf_temp.attr,
