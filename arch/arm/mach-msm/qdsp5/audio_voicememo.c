@@ -75,7 +75,6 @@
 #define MAX_REC_BUF_SIZE (MAX_FRAME_SIZE * 10)
 #define MAX_VOICEMEMO_BUF_SIZE  \
 	((MAX_REC_BUF_SIZE)*MAX_REC_BUF_COUNT) /* 5 buffers for 200ms frame */
-#define MSM_AUD_BUFFER_UPDATE_WAIT_MS 2000
 
 enum rpc_voc_rec_status_type {
 	RPC_VOC_REC_STAT_SUCCESS = 1,
@@ -732,17 +731,12 @@ static ssize_t audio_voicememo_read(struct file *file,
 	mutex_lock(&audio->read_lock);
 
 	MM_DBG("buff read =0x%8x \n", count);
-
 	while (count > 0) {
-		rc = wait_event_interruptible_timeout(audio->read_wait,
+		rc = wait_event_interruptible(audio->read_wait,
 			(audio->in[audio->read_next].used > 0) ||
-			(audio->stopped),
-			msecs_to_jiffies(MSM_AUD_BUFFER_UPDATE_WAIT_MS));
+			(audio->stopped));
 
-		if (rc == 0) {
-			rc = -ETIMEDOUT;
-			break;
-		} else if (rc < 0)
+		if (rc < 0)
 			break;
 
 		if (audio->stopped) {
