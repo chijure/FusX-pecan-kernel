@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.32.59
- * Thu Jun 28 11:47:05 2012
+ * Fri Jun 29 00:30:13 2012
  */
 #define AUTOCONF_INCLUDED
 #define CONFIG_VIDEO_V4L1_COMPAT 1
@@ -604,6 +604,7 @@
 #define CONFIG_IPV6_NDISC_NODETYPE 1
 #define CONFIG_HAVE_AOUT 1
 #define CONFIG_SCSI_PROC_FS 1
+#define CONFIG_CPU_FREQ_GOV_ONDEMANDX 1
 #define CONFIG_MSM_DMA_TEST_MODULE 1
 #define CONFIG_LGE_SUPPORT_ERS 1
 #define CONFIG_USB_ANDROID_DIAG 1
