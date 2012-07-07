@@ -1,7 +1,7 @@
 /*
  * Automatically generated C config: don't edit
  * Linux kernel version: 2.6.32.59
- * Sat Jun 30 01:24:26 2012
+ * Sat Jul  7 12:57:55 2012
  */
 #define AUTOCONF_INCLUDED
 #define CONFIG_VIDEO_V4L1_COMPAT 1
@@ -727,6 +727,7 @@
 #define CONFIG_VFP 1
 #define CONFIG_NLS 1
 #define CONFIG_CRYPTO_ALGAPI 1
+#define CONFIG_PM_OPS 1
 #define CONFIG_MSM_RPC_PROC_COMM_TEST 1
 #define CONFIG_MTD_CFI_I1 1
 #define CONFIG_USER_WAKELOCK 1
