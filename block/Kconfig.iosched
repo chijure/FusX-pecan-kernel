@@ -31,6 +31,24 @@ config IOSCHED_DEADLINE
 	  a disk at any one time, its behaviour is almost identical to the
 	  anticipatory I/O scheduler and so is a good choice.
 
+config IOSCHED_CFQ
+	tristate "CFQ I/O scheduler"
+	default y
+	---help---
+	  The CFQ I/O scheduler tries to distribute bandwidth equally
+	  among all processes in the system. It should provide a fair
+	  working environment, suitable for desktop systems.
+	  This is the default I/O scheduler.
+
+config DEBUG_CFQ_IOSCHED
+	bool "Debug CFQ Scheduling"
+	depends on CFQ_GROUP_IOSCHED
+	select DEBUG_BLK_CGROUP
+	default n
+	---help---
+	  Enable CFQ IO scheduling debugging in CFQ. Currently it makes
+	  blktrace output more verbose.
+
 config IOSCHED_SIO
 	tristate "Simple I/O scheduler"
 	default y
@@ -48,6 +66,28 @@ config IOSCHED_VR
 	  Requests are chosen according to SSTF with a penalty of rev_penalty
 	  for switching head direction.
 
+config IOSCHED_BFQ
+	tristate "BFQ I/O scheduler"
+	depends on EXPERIMENTAL
+	default n
+	---help---
+	  The BFQ I/O scheduler tries to distribute bandwidth among
+	  all processes according to their weights.
+	  It aims at distributing the bandwidth as desired, independently of
+	  the disk parameters and with any workload. It also tries to
+	  guarantee low latency to interactive and soft real-time
+	  applications.  If compiled built-in (saying Y here), BFQ can
+	  be configured to support hierarchical scheduling.
+
+config CGROUP_BFQIO
+	bool "BFQ hierarchical scheduling support"
+	depends on CGROUPS && IOSCHED_BFQ=y
+	default n
+	---help---
+	  Enable hierarchical scheduling in BFQ, using the cgroups
+	  filesystem interface.  The name of the subsystem will be
+	  bfqio.
+
 choice
 	prompt "Default I/O scheduler"
 	default DEFAULT_CFQ
@@ -61,11 +101,17 @@ choice
 	config DEFAULT_DEADLINE
 		bool "Deadline" if IOSCHED_DEADLINE=y
 
+       config DEFAULT_CFQ
+		bool "CFQ" if IOSCHED_CFQ=y
+
        config DEFAULT_SIO
 		bool "SIO" if IOSCHED_SIO=y
 
 	config DEFAULT_VR
 		bool "V(R)" if IOSCHED_VR=y
+
+        config DEFAULT_BFQ
+		bool "BFQ" if IOSCHED_BFQ=y
 
 	config DEFAULT_NOOP
 		bool "No-op"
@@ -79,8 +125,10 @@ config DEFAULT_IOSCHED
 	string
 	default "anticipatory" if DEFAULT_AS
 	default "deadline" if DEFAULT_DEADLINE
+        default "cfq" if DEFAULT_CFQ
 	default "noop" if DEFAULT_NOOP
 	default "vr" if DEFAULT_VR
+        default "bfq" if DEFAULT_BFQ
 	default "sio" if DEFAULT_SIO
 
 endmenu
