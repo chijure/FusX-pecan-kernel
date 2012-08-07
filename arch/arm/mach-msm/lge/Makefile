@@ -18,39 +18,6 @@ obj-$(CONFIG_LGE_DIAGTEST) += lg_diag_screen_shot.o
 obj-$(CONFIG_LGE_DIAGTEST) += lg_fw_diag_mtc.o
 obj-$(CONFIG_LGE_DIAGTEST) += lg_diag_wifi.o
 
-obj-$(CONFIG_MACH_MSM7X27_THUNDERC) += board-thunderc.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERC) += board-thunderc-mmc.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERC) += board-thunderc-snd.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERC) += board-thunderc-panel.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERC) += board-thunderc-bt.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERC) += board-thunderc-camera.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERC) += board-thunderc-input.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERC) += board-thunderc-misc.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERC) += board-thunderc-pm.o
-
-obj-$(CONFIG_MACH_MSM7X27_THUNDERG) += board-thunderg.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERG) += board-thunderg-mmc.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERG) += board-thunderg-snd.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERG) += board-thunderg-panel.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERG) += board-thunderg-bt.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERG) += board-thunderg-camera.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERG) += board-thunderg-input.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERG) += board-thunderg-misc.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERG) += board-thunderg-pm.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERG) += lge_errorhandler.o #LGE_CHANGE [blue.park@lge.com] 2009-04-04 <For Error Handler>
-
-obj-$(CONFIG_MACH_MSM7X27_THUNDERG) += lge_temp.o # LGE_CHANGE neo.kang@lge.com just for Line PV. It will be removed
-obj-$(CONFIG_MACH_MSM7X27_THUNDERG) += lge_mtd_direct_access.o # LGE_CHANGE neo.kang@lge.com just for Line PV. It will be removed.
-
-obj-$(CONFIG_MACH_MSM7X27_THUNDERA) += board-thundera.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERA) += board-thundera-mmc.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERA) += board-thundera-snd.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERA) += board-thundera-panel.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERA) += board-thundera-bt.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERA) += board-thundera-camera.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERA) += board-thundera-input.o
-obj-$(CONFIG_MACH_MSM7X27_THUNDERA) += board-thundera-misc.o
-
 obj-$(CONFIG_MACH_MSM7X27_PECAN) += board-pecan.o
 obj-$(CONFIG_MACH_MSM7X27_PECAN) += board-pecan-mmc.o
 obj-$(CONFIG_MACH_MSM7X27_PECAN) += board-pecan-snd.o
@@ -64,20 +31,6 @@ obj-$(CONFIG_MACH_MSM7X27_PECAN) += lge_errorhandler.o #LGE_CHANGE [blue.park@lg
 
 obj-$(CONFIG_MACH_MSM7X27_PECAN) += lge_temp.o # LGE_CHANGE neo.kang@lge.com just for Line PV. It will be removed
 obj-$(CONFIG_MACH_MSM7X27_PECAN) += lge_mtd_direct_access.o # LGE_CHANGE neo.kang@lge.com just for Line PV. It will be removed.
-
-obj-$(CONFIG_MACH_MSM7X27_HAZEL) += board-hazel.o
-obj-$(CONFIG_MACH_MSM7X27_HAZEL) += board-hazel-mmc.o
-obj-$(CONFIG_MACH_MSM7X27_HAZEL) += board-hazel-snd.o
-obj-$(CONFIG_MACH_MSM7X27_HAZEL) += board-hazel-panel.o
-obj-$(CONFIG_MACH_MSM7X27_HAZEL) += board-hazel-bt.o
-obj-$(CONFIG_MACH_MSM7X27_HAZEL) += board-hazel-camera.o
-obj-$(CONFIG_MACH_MSM7X27_HAZEL) += board-hazel-input.o
-obj-$(CONFIG_MACH_MSM7X27_HAZEL) += board-hazel-misc.o
-obj-$(CONFIG_MACH_MSM7X27_HAZEL) += board-hazel-pm.o
-obj-$(CONFIG_MACH_MSM7X27_HAZEL) += lge_errorhandler.o #LGE_CHANGE [blue.park@lge.com] 2009-04-04 <For Error Handler>
-
-obj-$(CONFIG_MACH_MSM7X27_HAZEL) += lge_temp.o # LGE_CHANGE neo.kang@lge.com just for Line PV. It will be removed
-obj-$(CONFIG_MACH_MSM7X27_HAZEL) += lge_mtd_direct_access.o # LGE_CHANGE neo.kang@lge.com just for Line PV. It will be removed.
 
 obj-$(CONFIG_MACH_LGE) += devices_lge.o
 
