@@ -151,3 +151,5 @@ endif
 obj-$(CONFIG_MSM7200A_TLMM)	+= tlmm-msm7200a.o
 obj-$(CONFIG_MSM8660_TLMM)	+= tlmm-msm8660.o msm8660-gpio.o
 obj-$(CONFIG_MSM_BUS_SCALING)	+= msm_bus_core.o
+
+obj-$(CONFIG_FORCE_FAST_CHARGE) += fastchg.o
