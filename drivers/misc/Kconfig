@@ -391,6 +391,13 @@ config LGE_AT_CMD_DEVICE
 	help
 	 Choose if use AT_CMD device used for sending uevent to user space
 
+config GENERIC_BLN
+    bool "Generic BLN support for backlight notification"
+    default y
+    help
+      Say Y here to enable the backlight notification
+      for android led-notification (modified liblight needed)
+
 source "drivers/misc/c2port/Kconfig"
 source "drivers/misc/eeprom/Kconfig"
 source "drivers/misc/cb710/Kconfig"
