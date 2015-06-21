@@ -702,7 +702,7 @@ int dirty_writeback_centisecs_handler(ctl_table *table, int write,
 
 static void do_laptop_sync(struct work_struct *work)
 {
-	wakeup_flusher_threads(0);
+	wakeup_flusher_threads(0, WB_REASON_SYNC);
 	kfree(work);
 }
 
@@ -991,7 +991,7 @@ continue_unlock:
 }
 EXPORT_SYMBOL(write_cache_pages);
 
-/*
+/**
  * Function used by generic_writepages to call the real writepage
  * function and set the mapping flags on error
  */
