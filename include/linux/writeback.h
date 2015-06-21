@@ -22,6 +22,23 @@ enum writeback_sync_modes {
 };
 
 /*
+ * why some writeback work was initiated
+ */
+enum wb_reason {
+	WB_REASON_BACKGROUND,
+	WB_REASON_TRY_TO_FREE_PAGES,
+	WB_REASON_SYNC,
+	WB_REASON_PERIODIC,
+	WB_REASON_LAPTOP_TIMER,
+	WB_REASON_FREE_MORE_MEM,
+	WB_REASON_FS_FREE_SPACE,
+	WB_REASON_FORKER_THREAD,
+
+	WB_REASON_MAX,
+};
+extern const char *wb_reason_name[];
+
+/*
  * A control structure which tells the writeback code what to do.  These are
  * always on the stack, and hence need no locking.  They are always initialised
  * in a manner such that unspecified fields are set to zero.
